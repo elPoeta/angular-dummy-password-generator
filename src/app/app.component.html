@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="p-4 shadow">
+    <h1 class="text-primary text-center mt-2">
+      {{ title }}
+    </h1>
+    <div class="field">
+      <label class="label">length</label>
+      <input class="form-control" type="number" min="8" (input)="onchangeLength($event.target.value)"
+        [value]="length" />
+    </div>
+
+    <div class="form-check mt-2 mb-2">
+      <input type="checkbox" (change)="onChangeUseLetters()" id="letters" class="form-check-input" />
+      <label class="form-check-label" for="letters">Use letters</label>
+    </div>
+
+    <div class="form-check mt-2 mb-2">
+      <input type="checkbox" (change)="onChangeUseNumbers()" id="numbers" class="form-check-input" />
+      <label class="form-check-label" for="numbers">Use numbers</label>
+    </div>
+    <div class="form-check mt-2 mb-2">
+      <input type="checkbox" (change)="onChangeUseSymbols()" id="symbols" class="form-check-input" />
+      <label class="form-check-label" for="symbols">Use symbols</label>
+    </div>
+    <div>
+      <button [disabled]="!(includeLetters || includeNumbers || includeSymbols)" (click)="onButtonClick()"
+        class="btn btn-primary btn-lg btn-block">
+        Generate!
+      </button>
+    </div>
+    <div *ngIf="password" class="mb-3 mt-3">
+      <h3 class="h3 text-secondary">Your Password</h3>
+      <input class="form-control" type="text" [value]="password" disabled />
+    </div>
+  </div>
+</div>
